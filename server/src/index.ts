@@ -1,12 +1,17 @@
 import express from 'express';
 import { createServer } from 'http';
 import { Server as SocketIOServer } from 'socket.io';
+import cors from 'cors';
 
 const app = express();
 const httpServer = createServer(app);
+app.use(cors({
+  origin: 'http://localhost:5173/', // Allow requests from any origin
+  methods: ['GET', 'POST'],
+}));
 const io = new SocketIOServer(httpServer, {
   cors: {
-    origin: "*", // Adjust for your frontend URL in production
+    origin: "http://localhost:5173/", // Adjust for your frontend URL in production
     methods: ["GET", "POST"]
   }
 });
@@ -213,6 +218,10 @@ io.on('connection', (socket) => {
       attemptMatchmaking(); // Attempt to match any newly available users
     }
   });
+});
+
+app.get('/', (req, res) => {
+  res.send('Signaling server is running');
 });
 
 httpServer.listen(PORT, () => {
