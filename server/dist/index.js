@@ -10,12 +10,12 @@ const cors_1 = __importDefault(require("cors"));
 const app = (0, express_1.default)();
 const httpServer = (0, http_1.createServer)(app);
 app.use((0, cors_1.default)({
-    origin: 'http://localhost:5173/', // Allow requests from any origin
+    origin: '*', // Allow requests from any origin
     methods: ['GET', 'POST'],
 }));
 const io = new socket_io_1.Server(httpServer, {
     cors: {
-        origin: "http://localhost:5173/", // Adjust for your frontend URL in production
+        origin: "*", // Adjust for your frontend URL in production
         methods: ["GET", "POST"]
     }
 });
