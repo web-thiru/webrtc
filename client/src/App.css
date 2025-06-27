@@ -1,0 +1,43 @@
+.video-container {
+  display: flex;
+  /* gap: 10px; */
+  margin-top: 20px;
+  flex-direction: row;
+}
+
+.remote-video {
+  width: 100vh;
+  height: 80vh;
+  object-fit: cover;
+}
+
+.local-video {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 180px;  
+  height: 135px;  
+  object-fit: cover; 
+  border: 2px solid white;
+  border-radius: 8px;
+  z-index: 1;
+  /* transform: scaleX(-1); */
+  /* box-shadow: 0 4px 8px rgba(0,0,0,0.3); */
+}
+
+
+
+
+
+@media only screen and (max-width: 600px){
+  .video-container {
+    flex-direction: column;
+  }
+  .remote-video {
+    width: 100%;
+    height: 80vh;
+    border: 2px solid white;
+    border-radius: 8px;
+  }
+  
+}
